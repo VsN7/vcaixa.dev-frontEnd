@@ -28,7 +28,7 @@ Link para a instalação do Git: https://git-scm.com/book/pt-br/v2/Come%C3%A7and
 
 Link para a instalação do Node: https://nodejs.org/pt-br/download/package-manager/
 
-- Abra o terminal apertanto as teclas "Windows + R" e digite "CMD" ou procure por "CMD" no campo de pesquisa. (caso esteja utilizando o Linux, aperte as teclas "Ctrl + Alt + T", ou digite "terminal no campo de pesquisa" ).
+- Abra o terminal apertanto as teclas "Windows + R" e digite "CMD" ou procure por "CMD" no campo de pesquisa. (caso esteja utilizando o Linux, aperte as teclas "Ctrl + Alt + T", ou digite "terminal" no campo de pesquisa ).
 
 .![como abrir o terminal](https://uploaddeimagens.com.br/images/002/844/468/full/prompt.PNG?1598196010)
 
