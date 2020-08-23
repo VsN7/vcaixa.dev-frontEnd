@@ -130,7 +130,7 @@
     }),
     methods: {
         async retornarListaPorData(){
-            await api.get(`/movimentacao/data/${ new Date(this.formataStringData(this.editedItem.data))}`).then(response => {
+            await api.get(`/movimentacao/${ new Date(this.formataStringData(this.editedItem.data))}`).then(response => {
                 this.valorTotal = 0
                 this.desserts = response.data
                 this.somarValores()
