@@ -10,7 +10,9 @@ Esse projeto é um sistema focado em gerenciar as movimentações de caixa.
 
 - JavaScript
 - Node.js
+- Axios
 - Vue.js
+- Vuetify
 - HTML
 - CSS
 
