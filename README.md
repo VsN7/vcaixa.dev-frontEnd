@@ -43,4 +43,4 @@ Link para a instalação do Node: https://nodejs.org/pt-br/download/package-mana
 
 .![conected](https://uploaddeimagens.com.br/images/002/844/780/original/start.png?1598214071)
 
-### Observação: Caso esteja utilizando a API vcaixa.dev e a mesma estiver iniciada em sua maquina é necessário abrir a o arquivo /src/services/api.js e alterar a url para 'http://localhost:3000/api'(fique atento a qual porta está sendo utilizada na API)
+### Observação: Caso esteja utilizando a API vcaixa.dev e a mesma estiver iniciada em sua maquina é necessário abrir a o arquivo /src/services/api.js e alterar a url para 'http://localhost:3000/api' (fique atento a qual porta está sendo utilizada na API)
