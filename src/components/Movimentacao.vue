@@ -1,9 +1,9 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="desserts"
+    :items="lista"
     :search="search"
-    :key="desserts.id"
+    :key="lista.id"
     sort-by="nome"
     class="elevation-1"
     id="myTable"
@@ -73,7 +73,7 @@
       </v-toolbar>
     </template>
     <template v-slot:item.data="{ item }">
-           <span>{{new Date(item.data).toLocaleString().substr(0,10).replace('-','/')}}</span>
+           <span>{{(item.data != null && item.data != '') ?  new Date(item.data).toLocaleString().substr(0,10).replace('-','/'): ''}}</span>
          </template>
     <template v-slot:item.action="{ item }">
       <v-icon
@@ -167,7 +167,7 @@
           sortable: false 
         },
       ],
-      desserts: [
+      lista: [
         
       ],
       categorias: [
@@ -203,15 +203,16 @@
     },
     methods: {
       editItem (item) {
-        this.editedIndex = this.desserts.indexOf(item)
+        this.editedIndex = this.lista.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialog = true
         this.editedItem._id = item._id
+        this.editedItem.data = ( this.editedItem.data != null && this.editedItem.data != '' )? new Date(this.editedItem.data).toLocaleString().substr(0,10).replace('-','/') : ''
       },
       async deleteItem (item) {
-        const index = this.desserts.indexOf(item)
-        confirm('Deseja realmente excluir essa movimentacao?') && this.desserts.splice(index, 1) 
-        && await api.delete(`/movimentacao/${item._id}`)
+        const index = this.lista.indexOf(item)
+        confirm('Deseja realmente excluir essa movimentacao?') && this.lista.splice(index, 1) 
+        && await api.delete(`/movimentacao/${item._id}`) && alert('Movimentação deletada com sucesso!')
       },
       close () {
         this.dialog = false
@@ -228,21 +229,29 @@
             data:  new Date(this.formataStringData(this.editedItem.data)),
             categoria: this.editedItem.categoria
           });
+          await api.get('/movimentacao').then(response => {
+            this.lista.push(response.data[response.data.length-1])
+          });
           alert("Cadastro realizado com sucesso!!")
           this.editedItem.data = this.dataFormatoBR(this.editedItem.data)
-          this.desserts.push(this.editedItem)
           this.close()
       },
       async save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.desserts[this.editedIndex], this.editedItem)
+          Object.assign(this.lista[this.editedIndex], this.editedItem)
           await api.put(`/movimentacao/${this.editedItem._id}`,{
             tipo: this.editedItem.tipo,
             valor: this.editedItem.valor,
             descricao: this.editedItem.descricao,
+            data:  new Date(this.formataStringData(this.editedItem.data)),
             categoria: this.editedItem.categoria
           })
+          await api.get('/movimentacao').then(response => {
+            this.lista = response.data
+          });
           alert("Alteração realizada com sucesso!")
+          this.editedItem.data = this.dataFormatoBR(this.editedItem.data)
+
           this.close()
         } else {
           this.createMovimentacao()
@@ -268,7 +277,7 @@
     },
     async mounted(){
         await api.get('/movimentacao').then(response => {
-            this.desserts = response.data
+            this.lista = response.data
         });
         await api.get('/categoria').then(response => {
             this.categorias = response.data

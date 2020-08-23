@@ -62,7 +62,7 @@
                         <v-toolbar-title>Duvidas</v-toolbar-title>
                         <v-spacer></v-spacer>
                         <v-toolbar-items>
-                            <v-btn dark text href="https://www.youtube.com/watch?v=QfHEI6VcQ7U" target="_blank">
+                            <v-btn dark text href="https://www.youtube.com/watch?v=QO451v9H40c" target="_blank">
                                 <v-icon>mdi-play</v-icon>
                                 Tutorial
                             </v-btn>
@@ -191,31 +191,31 @@ export default {
           titulo: "Vitor Santos",
           subtitulo: "Gerenciamento de Usuários",
           descricao: "Módulo 01: Gernciamento de Usuários",
-          link: "https://www.youtube.com/watch?v=QfHEI6VcQ7U"
+          link: "https://youtu.be/QO451v9H40c?t=80"
         },
         {
           titulo: "Vitor Santos",
           subtitulo: "Gerenciamento de Categorias",
           descricao: "Módulo 02: Gernciamento de Categorias",
-          link: "https://www.youtube.com/watch?v=QfHEI6VcQ7U"
+          link: "https://youtu.be/QO451v9H40c?t=172"
         },
         {
           titulo: "Vitor Santos",
           subtitulo: "Gerenciamento de Movimentação",
           descricao: "Módulo 03: Gernciamento de Movimentações",
-          link: "https://www.youtube.com/watch?v=QfHEI6VcQ7U"
+          link: "https://youtu.be/QO451v9H40c?t=349"
         },
         {
           titulo: "Vitor Santos",
           subtitulo: "Relatório de Resumo de Caixa",
           descricao: "Módulo 04: Relatório de Resumo de Caixa",
-          link: "https://www.youtube.com/watch?v=QfHEI6VcQ7U"
+          link: "https://youtu.be/QO451v9H40c?t=544"
         },
         {
           titulo: "Vitor Santos",
           subtitulo: "Manipulação do site (Compilado Geral)",
-          descricao: "Módulo 04: Manipulação do site (Compilado Geral)",
-          link: "https://www.youtube.com/watch?v=QfHEI6VcQ7U"
+          descricao: "Manipulação do site (Compilado Geral)",
+          link: "https://www.youtube.com/watch?v=QO451v9H40c"
         }
         ],
            

@@ -2,9 +2,9 @@
 <div>
   <v-data-table
     :headers="headers"
-    :items="desserts"
+    :items="lista"
     :search="search"
-    :key="desserts.id"
+    :key="lista.id"
     sort-by="nome"
     class="elevation-1"
     id="myTable"
@@ -106,7 +106,7 @@
           value: 'descricao',
         }
       ],
-      desserts: [
+      lista: [
         
       ],
       valorTotal: 0,
@@ -132,14 +132,14 @@
         async retornarListaPorData(){
             await api.get(`/movimentacao/${ new Date(this.formataStringData(this.editedItem.data))}`).then(response => {
                 this.valorTotal = 0
-                this.desserts = response.data
+                this.lista = response.data
                 this.somarValores()
             });
         },
         somarValores() {
             var index = 0;
-            while(index < this.desserts.length ) {
-                this.valorTotal+= this.desserts[index].valor;
+            while(index < this.lista.length ) {
+                this.valorTotal+= this.lista[index].valor;
                 index++
             }
         },

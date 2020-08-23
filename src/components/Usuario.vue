@@ -1,9 +1,9 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="desserts"
+    :items="lista"
     :search="search"
-    :key="desserts.id"
+    :key="lista.id"
     sort-by="usuário"
     class="elevation-1"
     id="myTable"
@@ -129,7 +129,7 @@
         { text: 'E-mail', value: 'email' },
         { text: 'Ações',align: 'center', value: 'action', sortable: false },
       ],
-      desserts: [
+      lista: [
         
       ],
       editedIndex: -1,
@@ -171,14 +171,14 @@
     },
     methods: {
       editItem (item) {
-        this.editedIndex = this.desserts.indexOf(item)
+        this.editedIndex = this.lista.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialog = true
         this.editedItem._id = item._id
       },
       async deleteItem (item) {
-        const index = this.desserts.indexOf(item)
-        confirm('Deseja realmente remover o cadastro desse usuário?') && this.desserts.splice(index, 1) 
+        const index = this.lista.indexOf(item)
+        confirm('Deseja realmente remover o cadastro desse usuário?') && this.lista.splice(index, 1) 
         && await api.delete(`/usuario/${item._id}`) && alert('Usuário deletado com sucesso!')
       },
       close () {
@@ -199,7 +199,7 @@
           });
           
           await api.get('/usuario').then(response => {
-            this.desserts.push(response.data[response.data.length-1])
+            this.lista.push(response.data[response.data.length-1])
           });
           alert("Cadastro realizado com sucesso!!")
           
@@ -217,7 +217,7 @@
       },
       async save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.desserts[this.editedIndex], this.editedItem)
+          Object.assign(this.lista[this.editedIndex], this.editedItem)
           await api.put(`/usuario/${this.editedItem._id}`,{
             nome: this.editedItem.nome,
             email: this.editedItem.email,
@@ -235,7 +235,7 @@
     },
     async mounted(){
         await api.get('/usuario').then(response => {
-        this.desserts = response.data
+        this.lista = response.data
       });
     }
   }

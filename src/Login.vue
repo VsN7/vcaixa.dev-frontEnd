@@ -70,6 +70,7 @@ import api from './services/api'
     }),
     methods: {
         async verificarLogin () {
+          try{
             await api.get('/usuario/'+this.login).then( response => {
                 if(response.data.email == this.login &&response.data.senha == this.senha) {
                     Vue.config.productionTip = false
@@ -84,6 +85,9 @@ import api from './services/api'
                     alert("E-mail ou senha incorreto(s)")
                 }
             });
+          } catch(e) {
+            alert("E-mail ou senha incorreto(s)")
+          }
         },
         navigateTo(where){
             this.$router.push({name: where})

@@ -1,9 +1,9 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="desserts"
+    :items="lista"
     :search="search"
-    :key="desserts.id"
+    :key="lista.id"
     sort-by="nome"
     class="elevation-1"
     id="myTable"
@@ -64,7 +64,7 @@
       </v-icon>
     </template>
     <template class="asa" v-slot:no-data>
-      <v-btn color="primary">Reset</v-btn>
+      <span>Não há nenhum registro para exibição.</span>
     </template>
   </v-data-table>
 </template>
@@ -112,7 +112,7 @@
           sortable: false 
         },
       ],
-      desserts: [
+      lista: [
         
       ],
       editedIndex: -1,
@@ -137,15 +137,15 @@
     },
     methods: {
       editItem (item) {
-        this.editedIndex = this.desserts.indexOf(item)
+        this.editedIndex = this.lista.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialog = true
         this.editedItem._id = item._id
       },
       async deleteItem (item) {
-        const index = this.desserts.indexOf(item)
-        confirm('Deseja realmente excluir essa categoria?') && this.desserts.splice(index, 1) 
-        && await api.delete(`/categoria/${item._id}`)
+        const index = this.lista.indexOf(item)
+        confirm('Deseja realmente excluir essa categoria?') && this.lista.splice(index, 1) 
+        && await api.delete(`/categoria/${item._id}`) && alert('Categoria deletada com sucesso!')
       },
       close () {
         this.dialog = false
@@ -158,13 +158,15 @@
           await api.post("categoria", {
             nome: this.editedItem.nome
           });
+          await api.get('/categoria').then(response => {
+            this.lista.push(response.data[response.data.length-1])
+          });
           alert("Cadastro realizado com sucesso!!")
-          this.desserts.push(this.editedItem)
           this.close()
       },
       async save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.desserts[this.editedIndex], this.editedItem)
+          Object.assign(this.lista[this.editedIndex], this.editedItem)
           await api.put(`/categoria/${this.editedItem._id}`,{
             nome: this.editedItem.nome
           })
@@ -180,7 +182,7 @@
     },
     async mounted(){
         await api.get('/categoria').then(response => {
-        this.desserts = response.data
+        this.lista = response.data
       });
     }
   }
