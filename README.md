@@ -36,7 +36,7 @@ Link para a instalação do Node: https://nodejs.org/pt-br/download/package-mana
 
 .![primeiro passo terminal](https://uploaddeimagens.com.br/images/002/844/758/original/git_vue.png?1598212771)
 
-- Digite o comando "npm install", isso irá criar instalar uma diretório chamado "node_modules", aonde estará guardada todas as dependencias do projeto (esse processo pode demorar um pouco).
+- Digite o comando "npm install", isso irá criar um diretório chamado "node_modules", aonde estará guardada todas as dependencias do projeto (esse processo pode demorar um pouco).
 
 .![node_modules](https://uploaddeimagens.com.br/images/002/844/774/original/npm_install.png?1598213512)
 
